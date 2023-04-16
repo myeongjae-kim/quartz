@@ -8,3 +8,4 @@ enableToc: false
 </p>
 
 - [[notes/10-시-우리가-할-일은-웃는-것이다]]
+- [[notes/2-test]]
