@@ -28,3 +28,6 @@ commit:
 	cd content && find notes -type f | grep -v '^notes/images/' | sort | sed 's/\(.*\)/- [[\1]]/g' >> _index.md
 	git add -A
 	git commit -m "update content"
+
+deploy:
+	git push
