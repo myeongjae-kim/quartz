@@ -1,6 +1,6 @@
-name: Jacky Zhao
+name: Myeongjae Kim
 enableToc: true
-openToc: false
+openToc: true
 enableLinkPreview: true
 enableLatex: true
 enableCodeBlockTitle: true
@@ -9,7 +9,7 @@ enableCallouts: true
 enableSPA: true
 enableFooter: true
 enableContextualBacklinks: true
-enableRecentNotes: false
+enableRecentNotes: true
 enableGitHubEdit: true
 enableMermaid: true
 GitHubLink: https://github.com/myeongjae-kim/quartz/tree/hugo/content
@@ -18,12 +18,13 @@ search:
   operandApiKey: "REPLACE-WITH-YOUR-OPERAND-API-KEY"
   operandIndexId: "REPLACE-WITH-YOUR-OPERAND-INDEX-ID"
 description:
-  Host your second brain and digital garden for free. Quartz features extremely fast full-text search,
-  Wikilink support, backlinks, local graph, tags, and link previews.
+  메모 저장소에 오신것을 환영합니다.
 page_title:
-  "🪴 Quartz 3.3"
+  "🪴 김명재 (Myeongjae Kim)"
 links:
+  - link_name: Blog
+    link: https://myeongjae.kim
   - link_name: Twitter
-    link: https://twitter.com/_jzhao
+    link: https://twitter.com/myeongjae_kim
   - link_name: GitHub
-    link: https://github.com/jackyzha0
+    link: https://github.com/myeongjae-kim

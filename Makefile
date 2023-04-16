@@ -22,3 +22,9 @@ serve: ## Serve Quartz locally
 
 docker: ## Serve locally using Docker
 	docker run -it --volume=$(shell pwd):/quartz -p 1313:1313 ghcr.io/jackyzha0/quartz:hugo
+
+commit:
+	cd content && cat _index_head.md > _index.md
+	cd content && find notes -type f | grep -v '^notes/images/' | sort | sed 's/\(.*\)/- [[\1]]/g' >> _index.md
+	git add -A
+	git commit -m "update content"
