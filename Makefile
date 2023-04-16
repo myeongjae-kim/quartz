@@ -25,7 +25,7 @@ docker: ## Serve locally using Docker
 
 commit:
 	cd content && cat _index_head.md > _index.md
-	cd content && find notes -type f | grep -v '^notes/images/' | sort | sed 's/\.md//g' | sed 's/\(.*\)/- [[\1]]/g' >> _index.md
+	cd content && find notes -type f | grep -v '^notes/images/' | sort -s | sed 's/\(notes\/\)\([0-9]*\)\(.*\)/\2\t\1\2\3/g' | sort -ns | sed 's/.*\(notes\/.*\)\.md/\1/g' >> _index.md
 	git add -A
 	git commit -m "update content"
 
