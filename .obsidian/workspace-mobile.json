@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+                "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -114,7 +114,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md"
+            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md"
           }
         }
       }
@@ -133,23 +133,24 @@
   },
   "active": "af656c7d3e5f01cf",
   "lastOpenFiles": [
+    "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+    "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
+    "resources/_gen/assets/scss/styles",
+    "resources/_gen/assets/scss",
+    "resources/_gen/assets",
+    "resources/_gen/images",
+    "resources/_gen",
+    "resources",
     "i18n/no.toml",
     "i18n/en.toml",
     "assets/styles/_light_syntax.scss",
     "assets/styles/_callouts.scss",
     "content/notes/images/github-actions.png",
     "content/notes/callouts.md",
-    "i18n/de.toml",
     "content/notes/CJK + Latex Support (测试).md",
     "content/notes/images/fork.png",
-    "assets/styles/_dark_syntax.scss",
-    "i18n/it.toml",
-    "data/graphConfig.yaml",
     "content/notes/hosting.md",
-    "Makefile",
     "content/templates/post.md",
-    "LICENSE.txt",
-    "layouts/_default/_markup/render-link.html",
     "content/notes/preview changes.md",
     "screenshot.png",
     "content/notes/docker.md",
