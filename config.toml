@@ -1,5 +1,5 @@
 baseURL = "https://myeongjae.wiki/"
-languageCode = "en-us"
+languageCode = "ko-kr"
 relativeURLs = false
 disablePathToLower = true
 ignoreFiles = [
