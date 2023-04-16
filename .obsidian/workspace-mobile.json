@@ -1,0 +1,176 @@
+{
+  "main": {
+    "id": "8e87d46209056126",
+    "type": "split",
+    "children": [
+      {
+        "id": "0dc4f4784795705d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af656c7d3e5f01cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9fc46765adc4a5a4",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "f620e4ee2ea8f355",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "05ccc67d9d2bf238",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "f1fab7f8363f99c0",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "13bb0f41f0d06507",
+        "type": "leaf",
+        "state": {
+          "type": "starred",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "e59575b733de439a",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "2c35f80649fa7ded",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "23ea2df8ff23bd5c",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "3b8e4e0344de7fda",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "content/10. (시) 우리가 할 일은 웃는 것이다.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "af656c7d3e5f01cf",
+  "lastOpenFiles": [
+    "i18n/no.toml",
+    "i18n/en.toml",
+    "assets/styles/_light_syntax.scss",
+    "assets/styles/_callouts.scss",
+    "content/notes/images/github-actions.png",
+    "content/notes/callouts.md",
+    "i18n/de.toml",
+    "content/notes/CJK + Latex Support (测试).md",
+    "content/notes/images/fork.png",
+    "assets/styles/_dark_syntax.scss",
+    "i18n/it.toml",
+    "data/graphConfig.yaml",
+    "content/notes/hosting.md",
+    "Makefile",
+    "content/templates/post.md",
+    "LICENSE.txt",
+    "layouts/_default/_markup/render-link.html",
+    "content/notes/preview changes.md",
+    "screenshot.png",
+    "content/notes/docker.md",
+    "content/notes/images/obsidian-settings.png",
+    "content/notes/showcase.md",
+    "content/notes/custom Domain.md",
+    "content/notes/philosophy.md",
+    "content/notes/images/google-domains.png",
+    "content/notes/updating.md",
+    "content/notes/ignore notes.md",
+    "content/_index.md",
+    "content/notes/config.md",
+    "content/notes/images/github-pages.png",
+    "content/notes/search.md",
+    "CODE_OF_CONDUCT.md",
+    "README.md",
+    "content/notes/troubleshooting.md",
+    "static/icon.png",
+    "content/notes/obsidian.md",
+    "content/private/private-note.md",
+    "content/notes/setup.md",
+    "content/notes/editing.md"
+  ]
+}
