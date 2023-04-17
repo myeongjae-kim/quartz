@@ -9,3 +9,4 @@ enableToc: false
 
 - [[notes/1-메모상자]]
 - [[notes/2-시-우리가-할-일은-웃는-것이다]]
+- [[notes/3-vscode-extensions]]
