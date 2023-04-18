@@ -1,5 +1,5 @@
 ---
-title: 🪴 김명재 (Myeongjae Kim)
+title: 🪴 김명재
 enableToc: false
 ---
 
