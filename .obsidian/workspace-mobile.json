@@ -11,12 +11,8 @@
             "id": "af656c7d3e5f01cf",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -113,9 +107,7 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {
-            "file": "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md"
-          }
+          "state": {}
         }
       }
     ],
@@ -131,47 +123,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "af656c7d3e5f01cf",
+  "active": "f620e4ee2ea8f355",
   "lastOpenFiles": [
+    "content/notes/3a-kill-port.md",
+    "deploy.sh",
+    "content/notes/1-메모상자.md",
+    "static/icon.png",
+    "content/notes/3-vscode-extensions.md",
+    "content/notes/2-시-우리가-할-일은-웃는-것이다.md",
+    "content/notes/images/Ft4g4anaAAAu0U5.jpeg",
+    "static/default-thumbnail.png",
+    "content/notes/images/image (18).png",
+    "Untitled.md",
+    "public/notes/images/google-domains.png",
+    "public/notes/images/obsidian-settings.png",
+    "public/notes/images/github-actions.png",
+    "public/notes/images/fork.png",
+    "public/notes/images/github-pages.png",
+    "public/icon.png",
+    "public/notes/page/1/index.html",
+    "public/notes/10-우리가-할-일은-웃는-것이다/index.html",
+    "public/styles/_dark_syntax.bec558461529f0dd343a0b008c343934.min.css",
+    "public/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css",
+    "public/linkmap",
+    "public/js/util.00639692264b21bc3ee219733d38a8be.min.js",
+    "content/_index_head.md",
+    "public/indices/linkIndex.69defbb5f850c86c96956b3394de639c.min.json",
+    "public/notes/index.xml",
+    "public/sitemap.xml",
     "content/10. (시) 우리가 할 일은 웃는 것이다.md",
     "content/notes/10. (시) 우리가 할 일은 웃는 것이다.md",
-    "resources/_gen/assets/scss/styles",
-    "resources/_gen/assets/scss",
-    "resources/_gen/assets",
-    "resources/_gen/images",
-    "resources/_gen",
-    "resources",
-    "i18n/no.toml",
-    "i18n/en.toml",
-    "assets/styles/_light_syntax.scss",
-    "assets/styles/_callouts.scss",
-    "content/notes/images/github-actions.png",
     "content/notes/callouts.md",
     "content/notes/CJK + Latex Support (测试).md",
-    "content/notes/images/fork.png",
     "content/notes/hosting.md",
     "content/templates/post.md",
     "content/notes/preview changes.md",
-    "screenshot.png",
     "content/notes/docker.md",
-    "content/notes/images/obsidian-settings.png",
     "content/notes/showcase.md",
     "content/notes/custom Domain.md",
     "content/notes/philosophy.md",
-    "content/notes/images/google-domains.png",
     "content/notes/updating.md",
     "content/notes/ignore notes.md",
     "content/_index.md",
     "content/notes/config.md",
-    "content/notes/images/github-pages.png",
     "content/notes/search.md",
     "CODE_OF_CONDUCT.md",
     "README.md",
     "content/notes/troubleshooting.md",
-    "static/icon.png",
-    "content/notes/obsidian.md",
-    "content/private/private-note.md",
-    "content/notes/setup.md",
-    "content/notes/editing.md"
+    "content/notes/obsidian.md"
   ]
 }
