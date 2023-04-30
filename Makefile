@@ -31,6 +31,3 @@ commit:
 
 deploy:
 	git push
-
-dev:
-	hugo server
