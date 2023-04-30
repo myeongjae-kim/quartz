@@ -11,3 +11,4 @@ enableToc: false
 - [[notes/2-시-우리가-할-일은-웃는-것이다]]
 - [[notes/3-vscode-extensions]]
 - [[notes/3a-kill-port]]
+- [[notes/4-이력서]]
