@@ -1,6 +1,6 @@
 ---
 title: 🪴 김명재
-enableToc: false
+enableToc: true
 ---
 
 <p style="text-align:center">
