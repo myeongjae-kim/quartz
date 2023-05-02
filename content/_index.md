@@ -12,3 +12,5 @@ enableToc: true
 - [[notes/3-vscode-extensions]]
 - [[notes/3a-kill-port]]
 - [[notes/4-이력서]]
+- [[notes/5-기술]]
+- [[notes/5a-리액트-네이티브-디버깅-도구]]
