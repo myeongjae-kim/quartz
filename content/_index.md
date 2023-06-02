@@ -15,3 +15,4 @@ enableToc: true
 - [[notes/5-기술]]
 - [[notes/5a-리액트-네이티브-디버깅-도구]]
 - [[notes/5b-bitrise에서-빌드한-앱을-슬랙-메시지-버튼으로-받기]]
+- [[notes/5c-url과-세미콜론]]
