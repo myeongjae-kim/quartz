@@ -26,3 +26,4 @@ enableToc: true
 - [[notes/5j-프론트엔드-스켈레톤은-200ms-이상일-때]]
 - [[notes/5k-why-functional-programming-matters]]
 - [[notes/5l-javascript-깊은복사-structured-clone]]
+- [[notes/5m-promise-관련-eslint-rules]]
