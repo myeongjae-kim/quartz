@@ -28,3 +28,4 @@ enableToc: true
 - [[notes/5l-javascript-깊은복사-structured-clone]]
 - [[notes/5m-promise-관련-eslint-rules]]
 - [[notes/5m1-tsconfig-추천설정]]
+- [[notes/6-학문의-자세]]
