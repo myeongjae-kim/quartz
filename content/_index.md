@@ -27,3 +27,4 @@ enableToc: true
 - [[notes/5k-why-functional-programming-matters]]
 - [[notes/5l-javascript-깊은복사-structured-clone]]
 - [[notes/5m-promise-관련-eslint-rules]]
+- [[notes/5m1-tsconfig-추천설정]]
