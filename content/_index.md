@@ -29,3 +29,4 @@ enableToc: true
 - [[notes/5m-promise-관련-eslint-rules]]
 - [[notes/5m1-tsconfig-추천설정]]
 - [[notes/6-학문의-자세]]
+- [[notes/7-ghost에-code-highlight]]
