@@ -16,4 +16,4 @@ spring:
       auto-commit: false
 ```
 
-cf. open-in-view도 false로 설정하자.
+cf. open-in-view도 false로 설정하자: https://backendhance.com/en/blog/2023/open-session-in-view/#should-i-disable-osiv
