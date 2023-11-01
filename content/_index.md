@@ -34,6 +34,7 @@ enableToc: true
 - [[notes/5p-부하-테스트-도구]]
 - [[notes/5q-정규식으로-한글-돌릴-때-주의-유니코드]]
 - [[notes/5r-monorepo-tools]]
+- [[notes/5s-ux-pattern]]
 - [[notes/6-학문의-자세]]
 - [[notes/7-ghost에-code-highlight]]
 - [[notes/8-서버-없이-브라우저에서-작동하는-pdftool]]
