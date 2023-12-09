@@ -37,6 +37,8 @@ enableToc: true
 - [[notes/5s-ux-pattern]]
 - [[notes/5t-aws]]
 - [[notes/5t1-vpc-endpoint-gateway]]
+- [[notes/5u-kotlin]]
+- [[notes/5u1-kotlin-업데이트-따라잡기]]
 - [[notes/6-학문의-자세]]
 - [[notes/7-ghost에-code-highlight]]
 - [[notes/8-서버-없이-브라우저에서-작동하는-pdftool]]
