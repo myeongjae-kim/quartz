@@ -3,6 +3,10 @@ title: 5u1. Kotlin 업데이트 따라잡기
 ---
 1.4버전까지는 책 [Atomic Kotlin](https://www.atomickotlin.com/)으로 커버했으므로 1.5 변경사항부터 유용해보이는걸 정리해보자.
 
+
+TODO: 1.5.2부터 추가
+
+
 ## [What's new in Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html)
 
 ### `@JvmRecord`
@@ -94,5 +98,56 @@ https://kotlinlang.org/docs/whatsnew15.html#improvements-to-handling-nullability
 
 지원하는 nullability annotations: https://kotlinlang.org/docs/java-interop.html#nullability-annotations
 
-자바 코드에 JSpecify 써보면 괜찮겠다. 클래스에 `@NullMarked` 애노테이션 붙이면 `@Nullable` 애노테이션이 붙어있지 않은 매개변수와 리턴타입은 not null이라고 표현할 수 있음. https://jspecify.dev/docs/user-guide
+자바 코드에 JSpecify 써보면 괜찮겠다. 패키지나 클래스에 `@NullMarked` 애노테이션 붙이면 `@Nullable` 애노테이션이 붙어있지 않은 매개변수와 리턴타입은 not null이라고 표현할 수 있음. https://jspecify.dev/docs/user-guide, https://github.com/jspecify/jspecify/blob/eff8f186a7036d5f18108d27e09011a4f1198f05/src/main/java/org/jspecify/annotations/NullMarked.java#L115
 
+
+### locale에 영향받지 않는 대소문자 변환 함수 추가
+
+https://kotlinlang.org/docs/whatsnew15.html#stable-locale-agnostic-api-for-upper-lowercasing-text
+
+String
+
+|**Earlier versions**|**1.5.0 alternative**|
+|---|---|
+|`String.toUpperCase()`|`String.uppercase()`|
+|`String.toLowerCase()`|`String.lowercase()`|
+|`String.capitalize()`|`String.replaceFirstChar { it.uppercase() }`|
+|`String.decapitalize()`|`String.replaceFirstChar { it.lowercase() }`|
+
+Char
+
+|**Earlier versions**|**1.5.0 alternative**|
+|---|---|
+|`Char.toUpperCase()`|`Char.uppercaseChar(): Char`  <br>`Char.uppercase(): String`|
+|`Char.toLowerCase()`|`Char.lowercaseChar(): Char`  <br>`Char.lowercase(): String`|
+|`Char.toTitleCase()`|`Char.titlecaseChar(): Char`  <br>`Char.titlecase(): String`|
+
+
+### Path 표현할 때 나누기(`/`) operator를 사용할 수 있음
+
+https://kotlinlang.org/docs/whatsnew15.html#stable-path-api
+
+```
+// construct path with the div (/) operator
+
+val baseDir = Path("/base")
+val subDir = baseDir / "subdirectory" // list files in a directory
+
+val kotlinFiles: List<Path> = Path("/home/user").listDirectoryEntries("*.kt")
+```
+
+예전부터 됐었나본데 1.5.0에서 stable이 되었다.
+
+
+### 문자 타입(Char)에 메서드 추가
+
+유용한 메서드들이 있네. 숫자인지 문자인지 구분한다든지 
+
+https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code
+
+
+### `Collections.firstNotNullOf()`
+
+https://kotlinlang.org/docs/whatsnew15.html#new-collections-function-firstnotnullof
+
+`mapNotNull().first()`를 합쳐놓았다.
