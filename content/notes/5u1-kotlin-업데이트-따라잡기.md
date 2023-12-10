@@ -7,11 +7,134 @@ title: 5u1. Kotlin 업데이트 따라잡기
 TODO: 1.5.2부터 추가
 
 
+## [# What's new in Kotlin 1.9.20](https://kotlinlang.org/docs/whatsnew1920.html)
+
+### `java-test-fixtures` 플러그인으로 생성한 testFixtures sourceSet에서 main의 internal 클래스에 접근할 수 있다
+
+https://kotlinlang.org/docs/whatsnew1920.html#support-for-test-fixtures-to-access-internal-declarations
+
+### `enumValues()` 대신 `enumEntries()` (experimental)
+
+enum을 generic으로 받아서 사용할 때 쓴다. 역시 배열이 아니라 List를 사용하기 때문에 성능 이슈가 없다고 한다.
+
+https://kotlinlang.org/docs/whatsnew1920.html#replacement-of-the-enum-class-values-generic-function
+
+```kotlin
+enum class RGB { RED, GREEN, BLUE }
+
+@OptIn(ExperimentalStdlibApi::class)
+inline fun <reified T : Enum<T>> printAllValues() {
+    print(enumEntries<T>().joinToString { it.name })
+}
+
+printAllValues<RGB>()
+// RED, GREEN, BLUE
+```
+
+
+
+## [What's new in Kotlin 1.9.0](https://kotlinlang.org/docs/whatsnew19.html)
+
+### `enum`의 `values()` 대신 `entries` property 사용
+
+https://kotlinlang.org/docs/whatsnew19.html#stable-replacement-of-the-enum-class-values-function
+
+Java의 `values()`는 배열을 return하고, 배열을 쓰면 성능 문제가 생길 수 있다고 함.
+
+대신 entries 프로퍼티를 쓰면 된다. stable
+
+```kotlin
+enum class Color(val colorName: String, val rgb: String) {
+    RED("Red", "#FF0000"),
+    ORANGE("Orange", "#FF7F00"),
+    YELLOW("Yellow", "#FFFF00")
+}
+
+fun findByRgb(rgb: String): Color? = Color.entries.find { it.rgb == rgb }
+```
+
+
+### `data object`가 stable
+
+https://kotlinlang.org/docs/whatsnew19.html#stable-data-objects-for-symmetry-with-data-classes
+
+`sealed`와 함께 사용하면 좋음.
+
+```kotlin
+sealed interface ReadResult
+data class Number(val number: Int) : ReadResult
+data class Text(val text: String) : ReadResult
+data object EndOfFile : ReadResult
+
+fun main() {
+    println(Number(7)) // Number(number=7)
+    println(EndOfFile) // EndOfFile
+}
+```
+
+### inline value class의 생성자에 body를 쓸 수 있다 (stable)
+
+1.8.20에서 추가한 기능. 이제 stable이고 기본으로 사용할 수 있음
+
+```kotlin
+@JvmInline
+value class Person(private val fullName: String) {
+    // Allowed since Kotlin 1.4.30:
+    init {
+        check(fullName.isNotBlank()) {
+            "Full name shouldn't be empty"
+        }
+    }
+    // Allowed by default since Kotlin 1.9.0:
+    constructor(name: String, lastName: String) : this("$name $lastName") {
+        check(lastName.isNotBlank()) {
+            "Last name shouldn't be empty"
+        }
+    }
+}
+```
+
+
+### `..<` 열린 구간 operator가 stable
+
+
+
+
 ## [What's new in Kotlin 1.8.20](https://kotlinlang.org/docs/whatsnew1820.html)
 
 ### inline class의 생성자에 body 추가 (experimental)
 
-이전까지는 생성자만 사용할 수 있고 생성자 내부에서 
+이전까지는 생성자만 사용할 수 있고 생성자 내부에서 어떤 일을 할 수 없었다. 이제 primary constructor를 위한 `init {}`과 secondary constructor에 body를 사용할 수 있다.
+
+```kotlin
+@JvmInline
+value class Person(private val fullName: String) {
+// Allowed since Kotlin 1.4.30:
+    init {
+        check(fullName.isNotBlank()) {
+            "Full name shouldn't be empty"
+        }
+    }
+// Preview available since Kotlin 1.8.20:
+    constructor(name: String, lastName: String) : this("$name $lastName") {
+        check(lastName.isNotBlank()) {
+            "Last name shouldn't be empty"
+        }
+    }
+}
+```
+
+### kapt를 사용해도 IR Backend를 사용할 수 있는 옵션이 기본으로 적용
+
+`kapt.use.jvm.ir=true` 없어도 됨
+
+
+### Base64 인코딩 지원 (experimental)
+
+https://kotlinlang.org/docs/whatsnew1820.html#support-for-base64-encoding
+
+
+
 
 
 
