@@ -6,7 +6,62 @@ title: 5u1. Kotlin 업데이트 따라잡기
 
 TODO: 1.5.2부터 추가
 
-## [What's new in Kotlin 1.7.0]
+
+## [What's new in Kotlin 1.8.20](https://kotlinlang.org/docs/whatsnew1820.html)
+
+### inline class의 생성자에 body 추가 (experimental)
+
+이전까지는 생성자만 사용할 수 있고 생성자 내부에서 
+
+
+
+## [What's new in Kotlin 1.8.0](https://kotlinlang.org/docs/whatsnew18.html)
+
+K2 컴파일러 작업하느라 언어 변경사항이 많지 않은듯.
+
+### Java Optional 객체에 추가한 확장함수가 stable
+
+1.7.0에 experimental이었던 기능
+
+
+
+## [What's new in Kotlin 1.7.20](https://kotlinlang.org/docs/whatsnew1720.html)
+
+### 열린 구간(open-ended) operator `..<` 추가 (experimental)
+
+```kotlin
+when (value) {
+    in 0.0..<0.25 -> // First quarter
+    in 0.25..<0.5 -> // Second quarter
+    in 0.5..<0.75 -> // Third quarter
+    in 0.75..1.0 ->  // Last quarter  <- Note closed range here
+}
+```
+
+
+### inline class에 generic 추가 (experimental)
+
+```kotlin
+@JvmInline
+value class UserId<T>(val value: T)
+
+fun compute(s: UserId<String>) {} // Compiler generates fun compute-<hashcode>(s: Any?)
+```
+
+
+### kapt도 IR Backend를 사용할 수 있다 (experimental)
+
+코틀린 컴파일러 백엔드
+
+gradle.properties
+
+```
+kapt.use.jvm.ir=true
+```
+
+
+
+## [What's new in Kotlin 1.7.0](https://kotlinlang.org/docs/whatsnew18.html)
 
 ### Kotlin K2 컴파일러 alpha버전 릴리즈
 
@@ -29,6 +84,168 @@ value class BarWrapper(val bar: Bar): Bar by bar
 fun main() {
     val bw = BarWrapper(object: Bar {})
     println(bw.foo())
+}
+```
+
+
+### 타입 파라미터에 `_` 로 추론을 할 수 있다
+
+```kotlin
+abstract class SomeClass<T> {
+    abstract fun execute(): T
+}
+
+class SomeImplementation : SomeClass<String>() {
+    override fun execute(): String = "Test"
+}
+
+class OtherImplementation : SomeClass<Int>() {
+    override fun execute(): Int = 42
+}
+
+object Runner {
+    inline fun <reified S: SomeClass<T>, T> run(): T {
+        return S::class.java.getDeclaredConstructor().newInstance().execute()
+    }
+}
+
+fun main() {
+    // T is inferred as String because SomeImplementation derives from SomeClass<String>
+    val s = Runner.run<SomeImplementation, _>()
+    assert(s == "Test")
+
+    // T is inferred as Int because OtherImplementation derives from SomeClass<Int>
+    val n = Runner.run<OtherImplementation, _>()
+    assert(n == 42)
+}
+```
+
+
+### Definitely non-nullable types (stable)
+
+generic 타입 파라미터에 nullable 타입을 넣어도 매개변수에 null값이 들어오지 않도록 강제할 수 있다. `T & Any`
+
+```kotlin
+fun <T> elvisLike(x: T, y: T & Any): T & Any = x ?: y
+
+fun main() {
+    // OK
+    elvisLike<String>("", "").length
+    // Error: 'null' cannot be a value of a non-null type
+    elvisLike<String>("", null).length
+
+    // OK
+    elvisLike<String?>(null, "").length
+    // Error: 'null' cannot be a value of a non-null type
+    elvisLike<String?>(null, null).length
+}
+```
+
+
+### `DeepRecursiveFunction`이 stable
+
+1.4.0에 추가된 `DeepRecursiveFunction`이 stable이 되었다.
+
+`DeepRecursiveFunction` 을 사용하는 재귀함수는 stack을 heap에 쌓기 때문에 깊게 재귀를 들어가도 stack overflow를 피할 수 있다.
+
+```kotlin
+class Tree(val left: Tree?, val right: Tree?)
+
+val calculateDepth = DeepRecursiveFunction<Tree?, Int> { t ->
+    if (t == null) 0 else maxOf(
+        callRecursive(t.left),
+        callRecursive(t.right)
+    ) + 1
+}
+
+fun main() {
+    // Generate a tree with a depth of 100_000
+    val deepTree = generateSequence(Tree(null, null)) { prev ->
+        Tree(prev, null)
+    }.take(100_000).last()
+
+    println(calculateDepth(deepTree)) // 100000
+}
+```
+
+위 예제에서는 10만번을 들어가지만 stack overflow가 발생하지 않는다.
+
+1000이상의 깊이에서는 `DeepRecursiveFunction`을 사용하는걸 추천.
+
+
+### Java의 `Optional` 타입에 대한 확장함수 추가 (experimental)
+
+https://kotlinlang.org/docs/whatsnew17.html#new-experimental-extension-functions-for-java-optionals
+
+- getOrNull
+- getOrDefault
+- getOrElse
+- toList
+- toSet
+- asSequence
+- toCollection
+
+
+### 정규표현식에서 group에 이름 짓기
+
+이런게 됐었구나.. JS와 Native에서도 된다고 함.
+
+```kotlin
+fun main() {
+    val regex = "\\b(?<city>[A-Za-z\\s]+),\\s(?<state>[A-Z]{2}):\\s(?<areaCode>[0-9]{3})\\b".toRegex()
+    val input = "Coordinates: Austin, TX: 123"
+    val match = regex.find(input)!!
+    println(match.groups["city"]?.value) // "Austin" — by name
+    println(match.groups[2]?.value) // "TX" — by number
+}
+```
+
+backrefernce. 이전에 찾은 값과 동일해야만 매칭이 된다.
+
+```kotlin
+fun backRef() {
+    val regex = "(?<title>\\w+), yes \\k<title>".toRegex()
+    val match = regex.find("Do you copy? Sir, yes Sir!")!!
+    println(match.value) // "Sir, yes Sir"
+    println(match.groups["title"]?.value) // "Sir"
+}
+```
+
+replace에서도 named group을 사용할 수 있음
+
+```kotlin
+fun dateReplace() {
+    val dateRegex = Regex("(?<dd>\\d{2})-(?<mm>\\d{2})-(?<yyyy>\\d{4})")
+    val input = "Date of birth: 27-04-2022"
+    println(dateRegex.replace(input, "\${yyyy}-\${mm}-\${dd}")) // "Date of birth: 2022-04-27" — by name
+    println(dateRegex.replace(input, "\$3-\$2-\$1")) // "Date of birth: 2022-04-27" — by number
+}
+```
+
+
+### 자바의 SAM 메서드의 첫 번째 매개변수를 코틀린에서  `this`로 받을 수 있는 gradle plugin
+
+https://kotlinlang.org/docs/whatsnew17.html#the-sam-with-receiver-plugin-is-available-via-the-plugins-api
+
+```java
+public @interface SamWithReceiver {}
+
+@SamWithReceiver
+public interface TaskRunner {
+    void run(Task task);
+}
+```
+
+
+```kotlin
+fun test(context: TaskContext) {
+    val runner = TaskRunner {
+        // Here 'this' is an instance of 'Task'
+
+        println("$name is started")
+        context.executeTask(this)
+        println("$name is finished")
+    }
 }
 ```
 
@@ -62,7 +279,7 @@ fun test(loggingContext: LoggingContext) {
 ```
 
 
-### Definitely non-nullable types
+### Definitely non-nullable types (beta)
 
 generic 타입 파라미터에 nullable 타입을 넣어도 매개변수에 null값이 들어오지 않도록 강제할 수 있다. `T & Any`
 
