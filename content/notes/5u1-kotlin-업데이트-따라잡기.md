@@ -90,7 +90,7 @@ public final class InlineClass {
 
 최범균님의 책에서는 id클래스를 자바 기본 타입인 `Long`이 아니라 엔티티별로 id 클래스를 만들어서 사용한다. id를 구분할 때 타입으로 구분할 수 있어서 함수 매개변수에 여러 개의 id를 넣어야 할 때 실수하지 않을 수 있지만 `@GeneratedValue(strategy = GenerationType.IDENTITY)`를 사용할 수 없어서 auto increment를 적용할 수 없었기 때문에 사용하지 못했다.
 
-spring-data-commons 3.2.0부터는 kotlin value class를 지원하기 때문에 위 문제를 해결할 수 있을 것으로 보임: https://github.com/spring-projects/spring-data-commons/releases , - Add support for Kotlin Value Classes [#2866](https://github.com/spring-projects/spring-data-commons/pull/2866)
+jpa에서 kotlin value class를 id로 사용할 수 있으면 이 문제를 해결할 수 있을 것 같은데, spring-data-commons 3.2.0부터는 kotlin value class를 지원한다고는 하지만 id로서의 사용은 아직 안 된다. https://github.com/spring-projects/spring-data-commons/releases , - Add support for Kotlin Value Classes [#2866](https://github.com/spring-projects/spring-data-commons/pull/2866)
 
 
 
