@@ -6,16 +6,206 @@ title: 5u1. Kotlin 업데이트 따라잡기
 
 TODO: 1.5.2부터 추가
 
+## [What's new in Kotlin 1.7.0]
+
+### Kotlin K2 컴파일러 alpha버전 릴리즈
+
+https://kotlinlang.org/docs/whatsnew17.html#new-kotlin-k2-compiler-for-the-jvm-in-alpha
+
+기존 컴파일러보다 2배 이상 빠르네
+
+`-Xuse-k2`
+
+### inline class에 delegation을 쓸 수 있다
+
+```kotlin
+interface Bar {
+    fun foo() = "foo"
+}
+
+@JvmInline
+value class BarWrapper(val bar: Bar): Bar by bar
+
+fun main() {
+    val bw = BarWrapper(object: Bar {})
+    println(bw.foo())
+}
+```
+
+
+
+
+## [What's new in Kotlin 1.6.20](https://kotlinlang.org/docs/whatsnew1620.html)
+
+### context receiver prototype 추가
+
+React의 Context API와 유사하네. 아직 prototype이라 production code에서 사용할 수 없음.
+
+```kotlin
+interface LoggingContext {
+  val log: Logger // This context provides a reference to a logger
+}
+
+context(LoggingContext)
+fun startBusinessOperation() {
+  // You can access the log property since LoggingContext is an implicit receiver
+  log.info("Operation has started")
+}
+
+fun test(loggingContext: LoggingContext) {
+  with(loggingContext) {
+    // You need to have LoggingContext in a scope as an implicit receiver
+    // to call startBusinessOperation()
+    startBusinessOperation()
+  }
+}
+```
+
+
+### Definitely non-nullable types
+
+generic 타입 파라미터에 nullable 타입을 넣어도 매개변수에 null값이 들어오지 않도록 강제할 수 있다. `T & Any`
+
+아직 beta
+
+```kotlin
+fun <T> elvisLike(x: T, y: T & Any): T & Any = x ?: y
+
+fun main() {
+    // OK
+    elvisLike<String>("", "").length
+    // Error: 'null' cannot be a value of a non-null type
+    elvisLike<String>("", null).length
+
+    // OK
+    elvisLike<String?>(null, "").length
+    // Error: 'null' cannot be a value of a non-null type
+    elvisLike<String?>(null, null).length
+}
+```
+
+### 코틀린 인터페이스에 선언한 non-abstract property를 Java에서 default method로 사용할 수 있게 하는 방법 추가
+
+원래는 컴파일러 옵션에 `-Xjvm-default=all-compatibility`를 추가하고 인터페이스에 `@JvmDefaultWithoutCompatibility`를 붙여야만 했었다. 이렇게 하면 새로 추가되는 모든 인터페이스에 `@JvmDefaultWithoutCompatibility`를 붙여줘야 해서 까먹기 쉬웠음.
+
+1.6.20부터는 컴파일러 옵션에 `-Xjvm-default=all` 을 추가해서 모든 interface에 `@JvmDefaultWithoutCompatibility`를 붙일 수 있음. 컴파일러 옵션만 추가하면 non-abstract property를 Java에서 default method로 사용할 수 있다.
+
+
+### 하나의 모듈에 대한 병렬 컴파일 옵션 추가
+
+https://kotlinlang.org/docs/whatsnew1620.html#support-for-parallel-compilation-of-a-single-module-in-the-jvm-backend
+
+`-Xbackend-threads`
+
+거대한 single module에 대해서 병렬 컴파일을 하면 속도가 최대 15% 상승할 수 있음.
+
+이미 gradle module로 여러 개의 모듈을 쪼개놓은 상태라면 gradle에서 모듈별로 알아서 병렬로 컴파일하므로 이 옵션을 켜면 오히려 속도가 느려질 수 있다, thread의 context switch때문에.
+
+`kapt`를 사용하고 있으면 적용 못함.
+
+
+### annotation class에 대한 객체 생성 기능이 stable
+
+https://kotlinlang.org/docs/whatsnew1620.html#instantiation-of-annotation-classes
+
+
+
+
+## [What's new in Kotlin 1.6.0](https://kotlinlang.org/docs/whatsnew16.html)
+
+### experimental -> stable
+
+- 1.5.30에 추가되었던 `when`절의 sealed, boolean 객체에 대한 경고 처리
+- 1.5.30에 추가되었던 `suspend`함수를 부모타입으로 가질 수 있는 기능
+
+더 이상 experimental이 아니다
+
+### 클래스 타입 파라미터에 대한 어노테이션 추가
+
+https://kotlinlang.org/docs/whatsnew16.html#support-for-annotations-on-class-type-parameters
+
+```kotlin
+
+@Target(AnnotationTarget.TYPE_PARAMETER)
+annotation class BoxContent
+
+class Box<@BoxContent T> {}
+```
+
+
+### `@Repeatable` 어노테이션에 대한 자바 호환성 향상
+
+- `@java.lang.annotation.Repeatable`
+- `@kotlin.annotation.Repeatable`
+
+동일한 어노테이션을 여러 번 선언할 수 있게 해주는 `@Repeatable` 어노테이션. 자바와 코틀린 둘다 있었지만 코틀린 1.6.0 전까지는 자바의 `@Repeatable` 어노테이션을 코틀린에서 인식하지 못했음. 이제는 된다.
+
+
+### `readln(), readlnOrNull()` 함수 추가
+
+|**Earlier versions**|**1.6.0 alternative**|**Usage**|
+|---|---|---|
+|`readLine()!!`|`readln()`|Reads a line from stdin and returns it, or throws a `RuntimeException` if EOF has been reached.|
+|`readLine()`|`readlnOrNull()`|Reads a line from stdin and returns it, or returns `null` if EOF has been reached.|
+
+
+### `typeof<T>()`가 stable
+
+`KType` 객체를 리턴하는 `typeof<T>()`
+
+```kotlin
+inline fun <reified T> renderType(): String {
+  val type = typeOf<T>()
+  return type.toString()
+}
+
+fun main() {
+  val fromExplicitType = typeOf<Int>()
+  val fromReifiedType = renderType<List<Int>>()
+}
+```
+
+### collection builder가 stable
+
+`buildMap()`, `buildList()`, `buildSet()` 을 더 이상 opt-in 어노테이션 없이도 사용할 수 있다.
+
+
+### `Regex.splitToSequence(CharSequence)`, `CharSequence.splitToSequence(Regex)`가 stable
+
+
+### Bit rotation 함수가 stable
+
+```kotlin
+val number: Short = 0b10001
+println(number
+        .rotateRight(2)
+        .toString(radix = 2)) // 100000000000100
+println(number
+        .rotateLeft(2)
+        .toString(radix = 2))  // 1000100
+```
+
+### Kover, 코틀린을 위한 코드 커버리지 툴 (JaCoCo같은거)
+
+https://kotlinlang.org/docs/whatsnew16.html#kover-a-code-coverage-tool-for-kotlin
+
+gradle plugin으로 사용할 수 있다. 아직 experimental
+
+JaCoCo에서 잘 처리하지 못했던 inline function등에 대한 처리를 할 수 있음.
+
+
+
+
 ## [What's new in Kotlin 1.5.30](https://kotlinlang.org/docs/whatsnew1530.html)
 
 
-### selaed 객체 및 boolean 객체를 `when` 절에서 사용할 때 모든 케이스를 다루지 않으면 경고가 발생한다
+### selaed 객체 및 boolean 객체를 `when` 절에서 사용할 때 모든 케이스를 다루지 않으면 경고가 발생한다 (experimental)
 
 아직까지는 experimental.
 
 `enum` 에는 이미 적용되어 있음.
 
-### `suspend` 함수를 부모 타입으로 가질 수 있다.
+### `suspend` 함수를 부모 타입으로 가질 수 있다 (experimental)
 
 ```kolint
 class MyClass: suspend () -> Unit {
@@ -32,6 +222,26 @@ https://kotlinlang.org/docs/whatsnew1530.html#improvements-to-type-inference-for
 
 언젠가 쓸 일이 있겠지
 
+### nullability 어노테이션의 경고 수준을 정할 수 있다
+
+무시할건지, warn으로 경고로 처리할건지, strict로 에러로 처리할건지
+
+https://kotlinlang.org/docs/whatsnew1530.html#improved-nullability-annotation-support-configuration
+
+
+### 정규표현식과 매치되는 문자열의 index 위치를 검사하는 메서드 추가
+
+https://kotlinlang.org/docs/whatsnew1530.html#splitting-regex-to-a-sequence
+
+- `Regex.matchAt(input: CharSequence, index: Int): MatchResult?`
+- `Regex.matchesAt(input: CharSequence, index: Int): Boolean`
+
+`input`에서 `index`위치에 정규표현식을 만족하는 문자열이 있는지.
+
+
+### `Regex.splitToSequence()` 추가 (`split()`의 lazy 버전)
+
+`List`가 아니라 `Sequence`를 리턴한다.
 
 
 
