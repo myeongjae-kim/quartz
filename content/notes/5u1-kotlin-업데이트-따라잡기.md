@@ -7,6 +7,12 @@ title: 5u1. Kotlin 업데이트 따라잡기
 TODO: 1.5.2부터 추가
 
 
+# [What's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html)
+
+
+
+
+
 ## [What's new in Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html)
 
 ### `@JvmRecord`
@@ -81,6 +87,13 @@ public final class InlineClass {
 ```
 
 함수 호출을 하는 오버헤드는 있지만 객체 생성을 하지 않기 때문에 추가로 메모리를 사용하지 않는다.
+
+최범균님의 책에서는 id클래스를 자바 기본 타입인 `Long`이 아니라 엔티티별로 id 클래스를 만들어서 사용한다. id를 구분할 때 타입으로 구분할 수 있어서 함수 매개변수에 여러 개의 id를 넣어야 할 때 실수하지 않을 수 있지만 `@GeneratedValue(strategy = GenerationType.IDENTITY)`를 사용할 수 없어서 auto increment를 적용할 수 없었기 때문에 사용하지 못했다.
+
+spring-data-commons 3.2.0부터는 kotlin value class를 지원하기 때문에 위 문제를 해결할 수 있을 것으로 보임: https://github.com/spring-projects/spring-data-commons/releases , - Add support for Kotlin Value Classes [#2866](https://github.com/spring-projects/spring-data-commons/pull/2866)
+
+
+
 
 ### SAM(Single Abstract Method) adapters via invokedynamic
 
