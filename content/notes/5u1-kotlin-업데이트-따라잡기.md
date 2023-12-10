@@ -6,18 +6,49 @@ title: 5u1. Kotlin 업데이트 따라잡기
 
 TODO: 1.5.2부터 추가
 
-
-# [What's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html)
-
+## [What's new in Kotlin 1.5.30](https://kotlinlang.org/docs/whatsnew1530.html)
 
 
+### selaed 객체 및 boolean 객체를 `when` 절에서 사용할 때 모든 케이스를 다루지 않으면 경고가 발생한다
+
+아직까지는 experimental.
+
+`enum` 에는 이미 적용되어 있음.
+
+### `suspend` 함수를 부모 타입으로 가질 수 있다.
+
+```kolint
+class MyClass: suspend () -> Unit {
+  override suspend fun invoke() { TODO() }
+}
+```
+
+함수 객체가 `suspend () -> Unit` 타입을 상속한다
+
+
+### 재귀적인 generic type에 대한 처리 향상
+
+https://kotlinlang.org/docs/whatsnew1530.html#improvements-to-type-inference-for-recursive-generic-types
+
+언젠가 쓸 일이 있겠지
+
+
+
+
+## [What's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html)
+
+### JSpecify nullness 어노테이션 지원
+
+https://kotlinlang.org/docs/whatsnew1520.html#support-for-jspecify-nullness-annotations
+
+자바 코드에 JSpecify 써보면 괜찮겠다. 패키지나 클래스에 `@NullMarked` 어노테이션 붙이면 `@Nullable` 어노테이션이 붙어있지 않은 매개변수와 리턴타입은 not null이라고 표현할 수 있음. https://jspecify.dev/docs/user-guide, https://github.com/jspecify/jspecify/blob/eff8f186a7036d5f18108d27e09011a4f1198f05/src/main/java/org/jspecify/annotations/NullMarked.java#L115
 
 
 ## [What's new in Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html)
 
 ### `@JvmRecord`
 
-`data class`에 `@JvmRecord` 애노테이션을 붙이면 자바에서 record 클래스처럼 사용할 수 있음.
+`data class`에 `@JvmRecord` 어노테이션을 붙이면 자바에서 record 클래스처럼 사용할 수 있음.
 
 ### `sealed interface`
 
@@ -90,9 +121,33 @@ public final class InlineClass {
 
 최범균님의 책에서는 id클래스를 자바 기본 타입인 `Long`이 아니라 엔티티별로 id 클래스를 만들어서 사용한다. id를 구분할 때 타입으로 구분할 수 있어서 함수 매개변수에 여러 개의 id를 넣어야 할 때 실수하지 않을 수 있지만 `@GeneratedValue(strategy = GenerationType.IDENTITY)`를 사용할 수 없어서 auto increment를 적용할 수 없었기 때문에 사용하지 못했다.
 
-jpa에서 kotlin value class를 id로 사용할 수 있으면 이 문제를 해결할 수 있을 것 같은데, spring-data-commons 3.2.0부터는 kotlin value class를 지원한다고는 하지만 id로서의 사용은 아직 안 된다. https://github.com/spring-projects/spring-data-commons/releases , - Add support for Kotlin Value Classes [#2866](https://github.com/spring-projects/spring-data-commons/pull/2866)
+아래처럼 `@Id`를 `Long`타입에 놓고 property에서 value class를 리턴하도록 하면 위 목적을 달성할 수 있음
 
-
+```kotlin
+@MappedSuperclass  
+abstract class BaseEntity<T>(  
+    @field:Transient  
+    protected var idConstructor: (id: Long) -> T,  
+) {  
+  
+    @Id  
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
+    @Column(name = "id")  
+    val _id: Long = 0L  
+    val id: T  
+        get() = idConstructor(_id)
+    
+    /**  
+     * 자식 클래스에서 postLoad에서 idConstructor를 넣어줘야 id property를 조회할 때 에러가 발생하지 않는다.  
+     * 예)  
+     *   override fun postLoad() {
+     *     this.idConstructor = ::ArticleId
+     *   }
+     **/
+     @PostLoad  
+     protected abstract fun postLoad()  
+}
+```
 
 
 ### SAM(Single Abstract Method) adapters via invokedynamic
@@ -103,15 +158,13 @@ SAM 인터페이스를 구현하는 객체에 대해서 컴파일 할 때 wrappe
 
 kotlin lambda에 대해서도 `invokedynamic`을 사용할 수 있긴 하지만 아직 experimental.
 
-### 자바의 nullability 애노테이션에 대한 처리 향상
+### 자바의 nullability 어노테이션에 대한 처리 향상
 
 https://kotlinlang.org/docs/whatsnew15.html#improvements-to-handling-nullability-annotations
 
-코틀린에서 자바로 작성된 클래스를 사용할 때 `@Nullable`, `@NullMarked`등 Java 코드에 붙어있는 nullability 관련 애노테이션을 의미있는 정보로 처리해준다.
+코틀린에서 자바로 작성된 클래스를 사용할 때 `@Nullable`등 Java 코드에 붙어있는 nullability 관련 어노테이션을 의미있는 정보로 처리해준다.
 
 지원하는 nullability annotations: https://kotlinlang.org/docs/java-interop.html#nullability-annotations
-
-자바 코드에 JSpecify 써보면 괜찮겠다. 패키지나 클래스에 `@NullMarked` 애노테이션 붙이면 `@Nullable` 애노테이션이 붙어있지 않은 매개변수와 리턴타입은 not null이라고 표현할 수 있음. https://jspecify.dev/docs/user-guide, https://github.com/jspecify/jspecify/blob/eff8f186a7036d5f18108d27e09011a4f1198f05/src/main/java/org/jspecify/annotations/NullMarked.java#L115
 
 
 ### locale에 영향받지 않는 대소문자 변환 함수 추가
