@@ -31,6 +31,8 @@ enableToc: true
 - [[notes/5n-react-native-naver-map-최신]]
 - [[notes/5o-스프링]]
 - [[notes/5o1-auto-commit-false]]
+- [[notes/5o2-rfc-7807]]
+- [[notes/5o3-spring-boot-release-notes]]
 - [[notes/5p-부하-테스트-도구]]
 - [[notes/5q-정규식으로-한글-돌릴-때-주의-유니코드]]
 - [[notes/5r-monorepo-tools]]
