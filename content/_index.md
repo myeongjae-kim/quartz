@@ -38,6 +38,7 @@ enableToc: true
 - [[notes/5r-monorepo-tools]]
 - [[notes/5s-ux-pattern]]
 - [[notes/5t-aws]]
+- [[notes/5t1-aws-lambda-graalvm]]
 - [[notes/5t1-vpc-endpoint-gateway]]
 - [[notes/5u-kotlin]]
 - [[notes/5u1-kotlin-업데이트-따라잡기]]

@@ -5,6 +5,29 @@ migration은 문서 보면서: https://github.com/spring-projects/spring-boot/wi
 
 ## Spring Boot 3.2
 
+Spring Framework 6.1에 있는 `RestClient`를  Spring Boot 3.2에서 지원함: https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.2-Release-Notes#restclient-support
+
+### Virtual Thread
+
+Virtual Thread 지원, Java 21 이상: https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.2-Release-Notes#support-for-virtual-threads
+
+Project Loom이 드디어! https://spring.io/blog/2023/09/09/all-together-now-spring-boot-3-2-graalvm-native-images-java-21-and-virtual
+
+Java 21이 2023년 9월에 LTS가 되었구나
+
+`spring.threads.virtual.enabled=true`
+
+Project Loom이랑 GraalVM 같이 쓰면 엄청 좋나보네
+
+Virtual Thread 관련 https://openjdk.org/jeps/444 읽기
+
+>Most languages that have adopted syntactic coroutines have done so due to an inability to implement user-mode threads (e.g., Kotlin), legacy semantic guarantees (e.g., the inherently single-threaded JavaScript), or language-specific technical constraints (e.g., C++). These limitations do not apply to Java.
+
+개쩐다
+
+### misc
+
+JWT는 `JwtDecoder`나 `ReactiveJwtDecoder` 쓰면 되는구나
 
 
 
