@@ -6,6 +6,7 @@ Spring 6.0부터 Spring MVC에서 RFC 7807을 지원한다고 함.
 http 에러의 전세계 표준 포맷이 되겠다.
 https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-ann-rest-exceptions.html
 ProblemDetail 클래스 어떻게 쓰는지 알아야겠네.</description></item><item><title/><link>https://myeongjae.wiki/notes/5o3-spring-boot-release-notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://myeongjae.wiki/notes/5o3-spring-boot-release-notes/</guid><description>https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Release-Notes
+migration은 문서 보면서: https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide
 Spring Data 2022.0 GenericJackson2JsonRedisSerializer, Jackson2JsonRedisSerializer redis에 serialize/deserialize할 때 이거 썼으면 됐었구나 https://github.com/spring-projects/spring-framework/wiki/What's-New-in-Spring-Framework-6.x
 6.1
 Reactive @Scheduled methods (including Kotlin coroutines); see 22924.</description></item><item><title/><link>https://myeongjae.wiki/notes/6-%ED%95%99%EB%AC%B8%EC%9D%98-%EC%9E%90%EC%84%B8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://myeongjae.wiki/notes/6-%ED%95%99%EB%AC%B8%EC%9D%98-%EC%9E%90%EC%84%B8/</guid><description>http://home.ewha.ac.kr/~oookwhan/essay/essay2-toyoung.htm
