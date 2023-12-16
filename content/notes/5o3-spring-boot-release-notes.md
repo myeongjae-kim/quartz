@@ -3,6 +3,56 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Release-Note
 migration은 문서 보면서: https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide
 
 
+## Spring Boot 3.2
+
+
+
+
+
+## Spring Boot 3.1
+
+https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.1-Release-Notes#testcontainers
+
+testcontainers 지원, 개발할 때 사용하기 편해진다
+
+
+
+https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.1-Release-Notes#auto-configuration-for-spring-authorization-server
+
+oauth2 authorization server 생겼었구나
+
+
+
+https://github.com/spring-projects/spring-data-commons/wiki/Spring-Data-2023.0-%28Ullman%29-Release-Notes#scroll-api
+
+Spring Data Scroll API?
+
+Scrolling supports two flavors:
+- Offset-based scrolling applying limit/offset in queries.
+- Keyset-based scrolling leveraging index support and sorting to retrieve sorted query sub-results
+https://www.baeldung.com/spring-data-jpa-scroll-api
+
+keyset-based scrolling 사용하면 배치에서 유용할지도?
+
+
+
+https://github.com/spring-projects/spring-data-commons/wiki/Spring-Data-2023.0-%28Ullman%29-Release-Notes#spring-data-jpa-introduces-hql-and-jpql-parser
+
+`@Query`로 커스텀 쿼리 작성한 메서드에 `Sort` 객체로 순서를 정할 수 있다. `Pageable` 객체도 return할 수 있음
+
+
+
+
+
+
+
+
+
+
+
+
+## Spring Boot 3.0
+
 ### Spring Data 2022.0
 
 - `GenericJackson2JsonRedisSerializer`, `Jackson2JsonRedisSerializer`
