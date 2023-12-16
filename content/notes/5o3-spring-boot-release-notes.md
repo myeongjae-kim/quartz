@@ -1,10 +1,12 @@
 https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Release-Notes
 
+migration은 문서 보면서: https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide
+
+
 ### Spring Data 2022.0
 
 - `GenericJackson2JsonRedisSerializer`, `Jackson2JsonRedisSerializer`
     - redis에 serialize/deserialize할 때 이거 썼으면 됐었구나
-    - 
 
 
 
@@ -26,6 +28,7 @@ https://github.com/spring-projects/spring-framework/wiki/What's-New-in-Spring-Fr
 6.0
 
 - GraalVM으로 native binary 생성하는거 신기하네.. 쓸 수 있나? 성능 좋나?
+    - serverless 코드 작성할 때 이걸로 하면 좋겠네
 - 하이버네이트 6.1 지원
 - `PathPatternParser` used by default (with the ability to opt into `PathMatcher`).
     - `PathMatcher` 대신에 `PathPatternParser` 써야겠네
