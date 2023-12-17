@@ -24,3 +24,9 @@ https://quarkus.io/guides/aws-lambda
 https://quarkus.io/guides/kotlin
 
 https://quarkus.io/guides/aws-lambda-http
+
+
+여기에 예시 코드 다 있네
+
+https://docs.aws.amazon.com/lambda/latest/dg/java-samples.html
+
