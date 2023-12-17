@@ -10,4 +10,17 @@ Spring Cloud Function도 참고해보자
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html
 
+https://gvart.dev/post/2023/02/native_spring_boot_aws_lambda/
+
+jdbc 직접 쓰거나 jdbi 쓰기.
+- https://www.baeldung.com/java-jdbc
+- https://www.baeldung.com/jdbi
+
+
 Spring 대신 https://quarkus.io/ ??
+
+https://quarkus.io/guides/aws-lambda
+
+https://quarkus.io/guides/kotlin
+
+https://quarkus.io/guides/aws-lambda-http
