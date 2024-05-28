@@ -45,6 +45,7 @@ enableToc: true
 - [[notes/5v-cli-tools]]
 - [[notes/5v1-tlm-cli에서-작동하는-copilot]]
 - [[notes/5w-로컬-개발환경에서-https]]
+- [[notes/5x-자바스크립트-노트북]]
 - [[notes/6-학문의-자세]]
 - [[notes/7-ghost에-code-highlight]]
 - [[notes/8-서버-없이-브라우저에서-작동하는-pdftool]]
